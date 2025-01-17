@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { registerUserApi } from '../../apis/Api';
 import { toast } from 'react-toastify';
@@ -88,7 +87,7 @@ const Register = () => {
   return (
     <>
       <NavbarSwitch />
-      <div className="register-container">
+      <div className="register-container no-bg">
         <div className="register-form">
           <h1 className="register-heading">Create an Account</h1>
           <form className="form" onSubmit={handleSubmit}>
@@ -102,7 +101,7 @@ const Register = () => {
               placeholder="First Name"
             />
             {errors.firstName && <p className="error-msg">{errors.firstName}</p>}
-            
+
             <label>Last Name</label>
             <input
               name="lastName"
@@ -113,7 +112,7 @@ const Register = () => {
               placeholder="Last Name"
             />
             {errors.lastName && <p className="error-msg">{errors.lastName}</p>}
-            
+
             <label>Email Address</label>
             <input
               name="email"
@@ -124,7 +123,7 @@ const Register = () => {
               placeholder="Email Address"
             />
             {errors.email && <p className="error-msg">{errors.email}</p>}
-            
+
             <label>Phone Number</label>
             <input
               name="phone"
@@ -135,7 +134,7 @@ const Register = () => {
               placeholder="Phone Number"
             />
             {errors.phone && <p className="error-msg">{errors.phone}</p>}
-            
+
             <label>Password</label>
             <input
               name="password"
@@ -146,7 +145,7 @@ const Register = () => {
               placeholder="Password"
             />
             {errors.password && <p className="error-msg">{errors.password}</p>}
-            
+
             <label>Confirm Password</label>
             <input
               name="confirmPassword"
@@ -157,15 +156,16 @@ const Register = () => {
               placeholder="Confirm Password"
             />
             {errors.confirmPassword && <p className="error-msg">{errors.confirmPassword}</p>}
-            
+
             <button type="submit" className="register-btn">Create Account</button>
           </form>
           <div className="login-redirect">
             <p>Already have an account? <span onClick={handleLoginRedirect} className="login-link">Login</span></p>
           </div>
         </div>
-        <div className="register-image">
-          <img src="../assets/images/ecom.png" alt="Register" />
+        <div className="info-section">
+          <h2>Welcome!</h2>
+          <p>Create your account to join us and access amazing features.</p>
         </div>
       </div>
     </>

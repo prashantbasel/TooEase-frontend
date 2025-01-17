@@ -1,27 +1,25 @@
-
-
 import React, { useState } from "react";
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { loginUserApi } from "../../apis/Api";
-import NavbarSwitch from '../../components/NavbarSwitch';
-import './Login.css'; 
+import NavbarSwitch from "../../components/NavbarSwitch";
+import "./Login.css";
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
     const navigate = useNavigate();
 
     // Validation function
     const validation = () => {
         let isValid = true;
-        if (email.trim() === '' || !email.includes('@')) {
+        if (email.trim() === "" || !email.includes("@")) {
             setEmailError("Email is empty or invalid");
             isValid = false;
         }
-        if (password.trim() === '') {
+        if (password.trim() === "") {
             setPasswordError("Password is empty");
             isValid = false;
         }
@@ -35,8 +33,8 @@ const Login = () => {
             return;
         }
         const data = {
-            "email": email,
-            "password": password
+            email: email,
+            password: password,
         };
         try {
             const res = await loginUserApi(data);
@@ -44,13 +42,13 @@ const Login = () => {
                 toast.error(res.data.message);
             } else {
                 toast.success(res.data.message);
-                localStorage.setItem('token', res.data.token);
+                localStorage.setItem("token", res.data.token);
                 const convertedData = JSON.stringify(res.data.userData);
-                localStorage.setItem('user', convertedData);
-                if(res.data.userData.isAdmin){
-                    window.location.href = '/admindashboard';
+                localStorage.setItem("user", convertedData);
+                if (res.data.userData.isAdmin) {
+                    window.location.href = "/admindashboard";
                 } else {
-                    window.location.href = '/dashboard';
+                    window.location.href = "/dashboard";
                 }
             }
         } catch (error) {
@@ -64,66 +62,64 @@ const Login = () => {
 
     // Handle Create Account
     const handleCreateAccount = () => {
-        navigate('/register');
+        navigate("/register");
     };
 
     // Handle Forgot Password Link Click
     const handleForgotPasswordClick = () => {
-        navigate('/forgot-password'); // Navigate to forgot-password page
+        navigate("/forgot-password");
     };
 
     return (
         <>
             <NavbarSwitch />
-            <div className="login-container">
+            <div className="login-container no-bg">
                 <div className="login-form">
-                    <h1 className="login-heading">Welcome Back </h1>
-                    <p className="login-subheading">To keep connected with us please login with your personal information by email address and password</p>
+                    <h1 className="login-heading">Login</h1>
                     <form className="form">
                         <label>Email Address</label>
                         <input
                             onChange={(e) => setEmail(e.target.value)}
                             type="text"
                             className="input-field"
-                            placeholder="Email Address"
+                            placeholder="Enter your email"
                         />
                         {emailError && <p className="error-msg">{emailError}</p>}
+
                         <label>Password</label>
                         <input
                             onChange={(e) => setPassword(e.target.value)}
                             type="password"
                             className="input-field"
-                            placeholder="Password"
+                            placeholder="Enter your password"
                         />
                         {passwordError && <p className="error-msg">{passwordError}</p>}
+
                         <div className="form-actions">
-                            <div className="remember-me">
-                                <input type="checkbox" id="rememberMe" />
-                                <label htmlFor="rememberMe">Remember Me</label>
-                            </div>
-                            {/* Forgot Password Link */}
                             <button
                                 type="button"
                                 className="forgot-password"
-                                onClick={handleForgotPasswordClick} // Trigger navigation to Forgot Password page
+                                onClick={handleForgotPasswordClick}
                             >
                                 Forgot Password?
                             </button>
                         </div>
-                        <button onClick={handleLogin} className="login-btn">Login Now</button>
-                        <button type="button" onClick={handleCreateAccount} className="create-account-btn">Create Account</button>
+
+                        <button onClick={handleLogin} className="login-btn">
+                            Login
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleCreateAccount}
+                            className="create-account-btn"
+                        >
+                            Create Account
+                        </button>
                     </form>
-                    <div className="social-login">
-                        <p>Or you can join with</p>
-                        <div className="social-icons">
-                            <button type="button" onClick={() => alert("Google login clicked")}><img src="../assets/images/google_logo.jpg" alt="Google" /></button>
-                            <button type="button" onClick={() => alert("Facebook login clicked")}><img src="../assets/images/fb_logo.png" alt="Facebook" /></button>
-                            <button type="button" onClick={() => alert("Twitter login clicked")}><img src="../assets/images/twitter_logo.png" alt="Twitter" /></button>
-                        </div>
-                    </div>
                 </div>
-                <div className="login-image">
-                    <img src="../assets/images/ecom.png" alt="Login" />
+                <div className="info-section">
+                    <h2>Welcome Back!</h2>
+                    <p>Sign in to continue accessing your account and manage your activities.</p>
                 </div>
             </div>
         </>
