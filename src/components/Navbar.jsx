@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
@@ -36,11 +36,11 @@ const Navbar = () => {
           <Link className="navbar-logo-link" to="/">
             <img src="../assets/images/logo.png" alt="Logo" className="navbar-logo" />
             <span className="brand-name">
-              <span className="brand-highlight">Too</span> Ease
+              <span className="brand-highlight">Happy</span> Feet
             </span>
           </Link>
           <div className="navbar-links-left">
-            <Link className="nav-link" to="/">Home</Link>
+
             <Link className="nav-link" to="/dashboard">Dashboard</Link>
             {user && <Link className="nav-link" to="/profile">Profile</Link>}
           </div>
@@ -76,7 +76,7 @@ const Navbar = () => {
               <Link to="/register" className="nav-link">
                 <i className="fas fa-user-plus mr-2"></i> Register
               </Link>
-              
+
             </>
           )}
         </div>

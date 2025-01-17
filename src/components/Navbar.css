@@ -1,7 +1,7 @@
 /* Navbar.css */
 
 .navbar-container {
-  background-color: #004080;
+  background-color: #000; /* Black background */
   position: fixed;
   top: 0;
   width: 100%;
@@ -41,7 +41,7 @@
 }
 
 .brand-highlight {
-  color: #004080; /* Color for "Too" */
+  color: #fff; /* Highlight color in white */
 }
 
 .navbar-links-left {
@@ -64,7 +64,7 @@
 }
 
 .navbar-links-left .nav-link:hover {
-  background-color: #003366; /* Slightly darker blue for hover */
+  background-color: #333; /* Slightly lighter black for hover */
 }
 
 .navbar-links-right {
@@ -85,7 +85,7 @@
 }
 
 .navbar-links-right .nav-link:hover {
-  background-color: #003366; /* Slightly darker blue for hover */
+  background-color: #333; /* Slightly lighter black for hover */
 }
 
 .nav-item.dropdown {
@@ -106,7 +106,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #004080;
+  background-color: #000; /* Black background for dropdown */
   padding: 0.5rem;
   border-radius: 4px;
 }
@@ -125,5 +125,5 @@
 }
 
 .dropdown-item:hover {
-  background-color: #003366;
+  background-color: #333; /* Slightly lighter black for hover */
 }
