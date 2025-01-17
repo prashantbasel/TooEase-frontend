@@ -67,21 +67,21 @@ const Dashboard = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="https://cdn.shopify.com/s/files/1/0507/2096/4799/files/69538118_1155314721525528_580174988481396736_o_e27c6c1b-1157-48f4-9a58-62d088f9692d.jpg?v=1617184893" className="d-block w-100" alt="Appliance 1" />
+            <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="d-block w-100" alt="Appliance 1" />
             <div className="carousel-caption d-none d-md-block">
               <h5>Big Sale on Appliances</h5>
               <p>Don't miss out on our special discounts.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img src="https://d1pjg4o0tbonat.cloudfront.net/content/dam/midea-aem/gulf/kv3.jpg/jcr:content/renditions/cq5dam.web.5000.5000.jpeg" className="d-block w-100" alt="Appliance 2" />
+            <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="d-block w-100" alt="Appliance 2" />
             <div className="carousel-caption d-none d-md-block">
               <h5>Best Prices Guaranteed</h5>
               <p>Get the best deals on top appliances.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img src="https://png.pngtree.com/background/20210711/original/pngtree-taobao-e-commerce-appliances-promotion-poster-banner-picture-image_1084957.jpg" className="d-block w-100" alt="Appliance 3" />
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="d-block w-100" alt="Appliance 3" />
             <div className="carousel-caption d-none d-md-block">
               <h5>Top Quality Appliances</h5>
               <p>Shop now for the latest and greatest in home appliances.</p>
@@ -98,7 +98,7 @@ const Dashboard = () => {
         </button>
       </div>
 
-      {/* Search Bar */}
+      {/* Search Bar 
       <div className="search-container mt-4">
         <input
           type="text"
@@ -108,7 +108,7 @@ const Dashboard = () => {
           className="form-control"
         />
         <button onClick={handleSearch} className="btn btn-primary mt-2">Search</button>
-      </div>
+      </div> */}
 
       {/* Product Cards */}
       <h2 className="mt-4 text-primary">Available Products</h2>
