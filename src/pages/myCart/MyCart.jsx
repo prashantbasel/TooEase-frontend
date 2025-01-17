@@ -21,7 +21,7 @@ import {
 
 // Background wrapper for the entire page
 const BackgroundWrapper = styled.div`
-  background: url('https://assets-global.website-files.com/61e7be6e6f17f5346fc7ec9f/61e7be6f6f17f5a75bc7ed68_background-sign-in-tech-ui-kit-webflow-template.svg') no-repeat center center;
+  background: url('https://images.unsplash.com/photo-1526415302530-ad8c7d818689?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
   background-size: cover;
   min-height: 100vh;
   padding: 2rem;
@@ -164,10 +164,10 @@ const Cart = () => {
     const updatedCartItems = cartItems.map((item) =>
       item._id === cart._id
         ? {
-            ...item,
-            quantity: value,
-            total: item.productId.productPrice * value,
-          }
+          ...item,
+          quantity: value,
+          total: item.productId.productPrice * value,
+        }
         : item
     );
     setCartItems(updatedCartItems);
@@ -329,16 +329,16 @@ const Cart = () => {
                   >
                     <Image
                       width={150}
-                      src={`http://localhost:5000/products/${cart.productId.productImage}`}
-                      alt={cart.productName}
+                      src={`http://localhost:5000/products/${cart.productId?.productImage || 'default.jpg'}`}
+                      alt={cart.productId?.productName || 'Product'}
                       preview={{
-                        src: `http://localhost:5000/products/${cart.productId.productImage}`,
+                        src: `http://localhost:5000/products/${cart.productId?.productImage || 'default.jpg'}`,
                       }}
                     />
                     <ItemDetails>
-                      <ItemName>{cart.productId.productName}</ItemName>
-                      <ItemPrice>Rs. {cart.productId.productPrice}</ItemPrice>
-                      <p>{cart.productId.productDescription}</p>
+                      <ItemName>{cart.productId?.productName || 'Unknown Product'}</ItemName>
+                      <ItemPrice>Rs. {cart.productId?.productPrice || 0}</ItemPrice>
+                      <p>{cart.productId?.productDescription || 'No description available.'}</p>
                       <QuantityControl>
                         <Button
                           icon={<MinusOutlined />}
