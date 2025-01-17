@@ -7,7 +7,7 @@ import { getUserOrdersApi } from "../../apis/Api";
 
 // Wrapper for the entire page with background image
 const BackgroundWrapper = styled.div`
-  background: url('https://assets-global.website-files.com/61e7be6e6f17f5346fc7ec9f/61e7be6f6f17f5a75bc7ed68_background-sign-in-tech-ui-kit-webflow-template.svg') no-repeat center center;
+  background: url('https://images.unsplash.com/photo-1526415302530-ad8c7d818689?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
   background-size: cover;
   min-height: 100vh;
   padding: 2rem;
