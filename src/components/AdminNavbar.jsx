@@ -32,17 +32,8 @@ const AdminNavbar = () => {
     <div className="navbar-container">
       <nav className="navbar">
         <div className="navbar-left">
-          <Link className="navbar-logo-link" to="/">
-            <img src="../assets/images/logo.png" alt="Logo" className="navbar-logo" />
-            <span className="brand-name">
-              <span className="brand-highlight">Too</span> Ease
-            </span>
-          </Link>
-          <div className="navbar-links-left">
-            {/* <Link className="nav-link" to="/">Home</Link> */}
-            <Link className="nav-link" to="/admindashboard">Dashboard</Link>
-            {user && <Link className="nav-link" to="/contactus">contact us</Link>}
-          </div>
+          
+          
         </div>
         <div className="navbar-links-right">
           {user ? (
