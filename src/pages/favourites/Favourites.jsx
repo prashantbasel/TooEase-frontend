@@ -2,12 +2,12 @@ import { DeleteOutlined, HeartOutlined } from "@ant-design/icons";
 import { Button, Image, message, Skeleton } from "antd";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { deleteFromFavoriteApi, getFavoriteByUserApi, addToCartApi } from "../../apis/Api";
 import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+import { addToCartApi, deleteFromFavoriteApi, getFavoriteByUserApi } from "../../apis/Api";
 
 const BackgroundWrapper = styled.div`
-  background: url('https://assets-global.website-files.com/61e7be6e6f17f5346fc7ec9f/61e7be6f6f17f5a75bc7ed68_background-sign-in-tech-ui-kit-webflow-template.svg') no-repeat center center;
+  background: url('https://images.unsplash.com/photo-1526415302530-ad8c7d818689?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
   background-size: cover;
   min-height: 100vh; /* Adjust as needed */
   padding: 2rem;
@@ -73,15 +73,21 @@ const Favourites = () => {
   const fetchFavorites = () => {
     getFavoriteByUserApi()
       .then((res) => {
-        setFavouriteItems(res.data.favorites);
+        setFavouriteItems(res.data.favorites || []);
         setLoading(false);
       })
       .catch((err) => {
         message.error(err.response?.data?.message || "Something went wrong");
+        setLoading(false);
       });
   };
 
   const handleDeleteFavourite = (favouriteId) => {
+    if (!favouriteId) {
+      message.error("Invalid item selected for removal.");
+      return;
+    }
+
     deleteFromFavoriteApi(favouriteId)
       .then(() => {
         setChangeFav(!changefav);
@@ -93,17 +99,17 @@ const Favourites = () => {
   };
 
   const handleAddToCart = async (productId, productPrice) => {
+    if (!productId) {
+      message.error("Invalid product selected.");
+      return;
+    }
+
     try {
       const total = 1 * productPrice; // Assuming quantity is 1
 
-      await addToCartApi({ 
-        productId: productId, 
-        quantity: 1, 
-        total: total 
-      });
-
+      await addToCartApi({ productId, quantity: 1, total });
       message.success("Added to cart successfully!");
-      navigate('/my_cart');
+      navigate("/my_cart");
     } catch (error) {
       message.error("Failed to add to cart.");
     }
@@ -123,54 +129,51 @@ const Favourites = () => {
 
   return (
     <BackgroundWrapper>
-      <FavouritesContainer
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <FavouritesContainer>
         <h2>
           <HeartOutlined /> Your Favourites
         </h2>
         <AnimatePresence>
           {favouriteItems.length > 0 ? (
-            favouriteItems.map((item, index) => (
-              <FavouriteItem
-                key={item._id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Image
-                  width={150}
-                  src={`http://localhost:5000/products/${item.productId.productImage}`}
-                  alt={item.productName}
-                  preview={{
-                    src: `http://localhost:5000/products/${item.productId.productImage}`,
-                  }}
-                />
-                <ItemDetails>
-                  <ItemName>{item.productId.productName}</ItemName>
-                  <ItemPrice>Rs. {item.productId.productPrice}</ItemPrice>
-                  <p>{item.productDescription}</p>
+            favouriteItems.map((item, index) => {
+              const product = item?.productId;
+              if (!product) return null;
+
+              return (
+                <FavouriteItem
+                  key={item._id || index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Image
+                    width={150}
+                    src={`http://localhost:5000/products/${product.productImage || "default.jpg"}`}
+                    alt={product.productName || "Product"}
+                  />
+                  <ItemDetails>
+                    <ItemName>{product.productName || "Unknown Product"}</ItemName>
+                    <ItemPrice>Rs. {product.productPrice || 0}</ItemPrice>
+                    <Button
+                      type="primary"
+                      onClick={() => handleAddToCart(product._id, product.productPrice || 0)}
+                      style={{ marginTop: "1rem" }}
+                    >
+                      Buy Now
+                    </Button>
+                  </ItemDetails>
                   <Button
                     type="primary"
-                    onClick={() => handleAddToCart(item.productId._id, item.productId.productPrice)}
-                    style={{ marginTop: '1rem' }}
+                    danger
+                    icon={<DeleteOutlined />}
+                    onClick={() => handleDeleteFavourite(item._id)}
                   >
-                    Buy Now
+                    Remove
                   </Button>
-                </ItemDetails>
-                <Button
-                  type="primary"
-                  danger
-                  icon={<DeleteOutlined />}
-                  onClick={() => handleDeleteFavourite(item.productId._id)}
-                >
-                  Remove
-                </Button>
-              </FavouriteItem>
-            ))
+                </FavouriteItem>
+              );
+            })
           ) : (
             <EmptyFavouritesMessage>
               <HeartOutlined style={{ fontSize: 50, marginBottom: "1rem" }} />

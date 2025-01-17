@@ -18,8 +18,8 @@ body {
   position: relative;
   text-align: center;
   color: white;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(2, 55, 148, 0.7)),
-    url('https://www.bostik.com/files/live/sites/shared_bostik/files/post/2016/4/800x480_127.-Household-App-crop640x480.jpg') no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(236, 233, 232, 0.7)),
+    url('https://images.unsplash.com/photo-1679284392467-347236c31c5e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
   background-size: cover;
   height: 80vh;
   display: flex;
@@ -82,7 +82,7 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 60px 0;
-  background-color: #002b44;
+  background-color: #ec9428;
   color: #ffffff; /* Set default text color for the features section */
 }
 
@@ -120,46 +120,3 @@ body {
   font-size: 1.1rem;
 }
 
-/* Footer Styles */
-.footer {
-  background-color: #20232a;
-  color: white;
-  padding: 40px 20px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.footer-item {
-  margin: 10px;
-}
-
-.footer-item h3 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.footer-item p {
-  margin: 5px 0;
-}
-
-.footer-item a {
-  color: #ffcc00;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-item a:hover {
-  color: #e6b800;
-}
-
-.footer-bottom {
-  background-color: #181a1e;
-  padding: 10px 0;
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 20px;
-}

@@ -1,13 +1,13 @@
 
+import { Button, Image } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getSingleProduct, addToCartApi, getReviewsApi, addReviewApi, getUserProfileApi } from '../../apis/Api';
-import Footer from '../../components/Footer';
+import Rating from 'react-rating-stars-component';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for react-toastify
-import { Button, Image } from 'antd';
-import Rating from 'react-rating-stars-component';
 import styled from 'styled-components';
+import { addReviewApi, addToCartApi, getReviewsApi, getSingleProduct, getUserProfileApi } from '../../apis/Api';
+import Footer from '../../components/Footer';
 import './ViewProduct.css';
 
 const PriceTag = styled.p`
@@ -226,12 +226,7 @@ const ViewProduct = () => {
         </div>
         <div className="row mt-4">
           <div className="col-md-12">
-            <div className="card p-3 additional-info">
-              <h4>Additional Information</h4>
-              <p><strong>Warranty: </strong>1 year</p>
-              <p><strong>Delivery Options: </strong>Home Delivery, Store Pickup</p>
-              <p><strong>Return Policy: </strong>30-day return policy</p>
-            </div>
+
           </div>
         </div>
       </div>
